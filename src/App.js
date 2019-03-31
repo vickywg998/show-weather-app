@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios'
 
 
-
 const weatherURL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/`
 const weatherAPI = '4b66d8d5bc81e8a9dad930ee1de49c57/';
 console.log(weatherAPI)
@@ -43,8 +42,15 @@ class App extends Component {
         axios.get(
           `${weatherURL}${weatherAPI}${lat},${long}`
         ).then(response => {
+          console.log(response.data)
+          const {summary,apparentTemperature,icon} =response.data.currently
+          const {timezone} =response.data
           this.setState({
             weatherData: response.data,
+            summary: summary,
+            timezone:timezone,
+            apparentTemperature:apparentTemperature,
+            icon:icon,
             loading: false
           });
         });
@@ -52,8 +58,15 @@ class App extends Component {
   }
 
   render() {
+ 
     return (
-      <div className="App">{this.state.weatherData}hi</div>
+      <div className="App">
+      <h1>Vicky's Awesome Weather App</h1>
+      <h2>Current City: {this.state.timezone}</h2>
+     <div>The weather right now is: {this.state.summary}</div>
+     <div>{this.state.icon}</div>
+     <div>{this.state.apparentTemperature}</div>
+      </div>
     );
   }
 }
