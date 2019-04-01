@@ -27,7 +27,7 @@ class App extends Component {
     loading: true,
     myLocation: null,
     weatherData: null,
-    visibility: false
+    showCelsius: false
   };
 
   componentDidMount() {
@@ -61,9 +61,14 @@ class App extends Component {
     event.preventDefault();
     this.setState(prevState => {
       return {
-        visibility: !prevState.visibility
+        showCelsius: !prevState.showCelsius
       };
     });
+  };
+
+  setCelcius = () => {
+    var cel = ((this.state.apparentTemperature - 32) * 5) / 9;
+    return cel + "° C";
   };
 
   render() {
@@ -77,27 +82,31 @@ class App extends Component {
         <h1>Weather App</h1>
         <h2>Current City: {this.state.timezone}</h2>
         <div>The weather right now is: {this.state.summary}</div>
-        <div>{this.state.icon}</div>
-        <div>{this.state.apparentTemperature}</div>
         <Skycons
           color="black"
           icon={this.state.icon}
           autoplay={false}
           style={styles}
         />
+        <div>{this.state.apparentTemperature}</div>
+       
         <div>
-          <h1>Fahrenheit to Celcius toggler</h1>
           <button
             onClick={this.handleToggleVisibility}
             className="toggle__button--style"
           >
-            {this.state.visibility === true ? (
-              "Celsius"
-            ) : (
-              <p>Fahrenheit={this.state.apparentTemperature}</p>
-            )}
+            {this.state.showCelsius === true ? "There you go non-Americans!" : "Change to Celsius"}
           </button>
-          {this.state.visibility && <div>HELLO THERE</div>}
+          {this.state.showCelsius && (
+            <div>
+              Celcius= {this.setCelcius(this.state.apparentTemperature)}
+            </div>
+          )}
+          {!this.state.showCelsius && (
+            <div>
+              <p>Fahrenheit={this.state.apparentTemperature}° F</p>
+            </div>
+          )}
         </div>
       </div>
     );
