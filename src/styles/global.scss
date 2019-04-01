@@ -31,5 +31,12 @@ canvas.skycon_size {
 
 .toggle__button--style {
   border: 1px solid black;
+  min-width: 100px;
+  border-radius: 10px;
+  padding: 5px;
   background-color: lightblue;
+}
+
+.weather__summary--padding {
+  padding: 10px 0;
 }

@@ -79,41 +79,40 @@ class App extends Component {
     console.log(this.state.icon);
     return (
       <>
-      <div className="weather__container">
-      <div className="weather__wrapper">
-      
-        <h1>Weather App</h1>
-        <Skycons
-          color="black"
-          icon={this.state.icon}
-          autoplay={false}
-          style={styles}
-        />
-        <h2>Current City: {this.state.timezone}</h2>
-        <div>The weather right now is: {this.state.summary}</div>
-       
-        <div>
-          <button
-            onClick={this.handleToggleVisibility}
-            className="toggle__button--style"
-          >
-            {this.state.showCelsius === true ?
-               "There you go non-Americans!" : 
-               "Change to Celsius"}
-          </button>
-          {this.state.showCelsius && (
+        <div className="weather__container">
+          <div className="weather__wrapper">
+            <h1>Weather App</h1>
+            <Skycons
+              color="black"
+              icon={this.state.icon}
+              autoplay={false}
+              style={styles}
+            />
+            <h2>Current City: {this.state.timezone}</h2>
+            <div className="weather__summary--padding">The weather right now is: {this.state.summary}</div>
+
             <div>
-              Celcius= {this.setCelcius(this.state.apparentTemperature)}
+              {this.state.showCelsius && (
+                <div>
+                 <p>Celcius= {this.setCelcius(this.state.apparentTemperature)}</p>
+                </div>
+              )}
+              {!this.state.showCelsius && (
+                <div>
+                  <p>Fahrenheit={this.state.apparentTemperature}° F</p>
+                </div>
+              )}
             </div>
-          )}
-          {!this.state.showCelsius && (
-            <div>
-              <p>Fahrenheit={this.state.apparentTemperature}° F</p>
-            </div>
-          )}
+            <button
+              onClick={this.handleToggleVisibility}
+              className="toggle__button--style"
+            >
+              {this.state.showCelsius === true
+                ? "There you go non-Americans!"
+                : "Change to Celsius"}
+            </button>
+          </div>
         </div>
-        </div>
-      </div>
       </>
     );
   }
