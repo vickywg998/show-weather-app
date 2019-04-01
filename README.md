@@ -12,7 +12,8 @@ Configure app
 ## API 
 
 Replace darkSky API with yours! 
-``` const weatherAPI = "[FILL_IN_YOUR_DARKSKY_API]";
+```javascript
+const weatherAPI = "[FILL_IN_YOUR_DARKSKY_API]";
 ```
 
 ## Languages & tools
