@@ -26,7 +26,8 @@ class App extends Component {
   state = {
     loading: true,
     myLocation: null,
-    weatherData: null
+    weatherData: null,
+    visibility: false
   };
 
   componentDidMount() {
@@ -50,21 +51,54 @@ class App extends Component {
             summary: summary,
             timezone: timezone,
             apparentTemperature: apparentTemperature,
-            icon: icon.toUpperCase(),
+            icon: icon.toUpperCase().replace(/-/g, "_"),
             loading: false
           });
         });
       });
   }
+  handleToggleVisibility = event => {
+    event.preventDefault();
+    this.setState(prevState => {
+      return {
+        visibility: !prevState.visibility
+      };
+    });
+  };
 
   render() {
+    const styles = {
+      width: "10%",
+      height: "10%"
+    };
+    console.log(this.state.icon);
     return (
       <div className="App">
-        <h1>Vicky's Awesome Weather App</h1>
+        <h1>Weather App</h1>
         <h2>Current City: {this.state.timezone}</h2>
         <div>The weather right now is: {this.state.summary}</div>
-        <div>{this.state.icon}</div>/<div>{this.state.apparentTemperature}</div>
-        <Skycons color="black" icon="CLEAR_NIGHT" autoplay={false} />
+        <div>{this.state.icon}</div>
+        <div>{this.state.apparentTemperature}</div>
+        <Skycons
+          color="black"
+          icon={this.state.icon}
+          autoplay={false}
+          style={styles}
+        />
+        <div>
+          <h1>Fahrenheit to Celcius toggler</h1>
+          <button
+            onClick={this.handleToggleVisibility}
+            className="toggle__button--style"
+          >
+            {this.state.visibility === true ? (
+              "Celsius"
+            ) : (
+              <p>Fahrenheit={this.state.apparentTemperature}</p>
+            )}
+          </button>
+          {this.state.visibility && <div>HELLO THERE</div>}
+        </div>
       </div>
     );
   }
