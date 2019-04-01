@@ -1,10 +1,13 @@
-body {
-  height: 600px;
-  width: 100%;
+body, html {
+  height: 100%;
+}
+
+.bg__container {
   background-image: url("../Assets/skybg.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  height: 100%;
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .weather__container {
@@ -17,6 +20,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  margin-bottom: 300px;
 }
 
 .weather__wrapper {
@@ -30,12 +35,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 40%;
-  height: auto;
+  width: 100%;
+  margin: 20%;
   background-color: white;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.4);
-  margin-top: 100px;
 }
 
 canvas.skycon_size {
@@ -49,6 +53,7 @@ canvas.skycon_size {
   border-radius: 10px;
   padding: 5px;
   background-color: lightblue;
+  margin-bottom: 20px;
 }
 
 .weather__summary--padding {

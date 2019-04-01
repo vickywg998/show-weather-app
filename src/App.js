@@ -78,7 +78,7 @@ class App extends Component {
     };
     console.log(this.state.icon);
     return (
-      <>
+      <div className="bg__container">
         <div className="weather__container">
           <div className="weather__wrapper">
             <h1>Weather App</h1>
@@ -113,7 +113,7 @@ class App extends Component {
             </button>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
