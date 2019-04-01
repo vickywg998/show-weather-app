@@ -1,3 +1,29 @@
+body {
+  height: 600px;
+  width: 100%;
+  background-image: url("../Assets/skybg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+.weather__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather__wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 40%;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  background:rgba(255,255,255,0.4);
+  margin-top: 100px;
+}
+
 canvas.skycon_size {
   width: 60px;
   height: 60px;
@@ -6,5 +32,4 @@ canvas.skycon_size {
 .toggle__button--style {
   border: 1px solid black;
   background-color: lightblue;
-  
 }

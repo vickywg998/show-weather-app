@@ -73,29 +73,33 @@ class App extends Component {
 
   render() {
     const styles = {
-      width: "10%",
-      height: "10%"
+      width: "50%",
+      height: "50%"
     };
     console.log(this.state.icon);
     return (
-      <div className="App">
+      <>
+      <div className="weather__container">
+      <div className="weather__wrapper">
+      
         <h1>Weather App</h1>
-        <h2>Current City: {this.state.timezone}</h2>
-        <div>The weather right now is: {this.state.summary}</div>
         <Skycons
           color="black"
           icon={this.state.icon}
           autoplay={false}
           style={styles}
         />
-        <div>{this.state.apparentTemperature}</div>
+        <h2>Current City: {this.state.timezone}</h2>
+        <div>The weather right now is: {this.state.summary}</div>
        
         <div>
           <button
             onClick={this.handleToggleVisibility}
             className="toggle__button--style"
           >
-            {this.state.showCelsius === true ? "There you go non-Americans!" : "Change to Celsius"}
+            {this.state.showCelsius === true ?
+               "There you go non-Americans!" : 
+               "Change to Celsius"}
           </button>
           {this.state.showCelsius && (
             <div>
@@ -108,7 +112,9 @@ class App extends Component {
             </div>
           )}
         </div>
+        </div>
       </div>
+      </>
     );
   }
 }
