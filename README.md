@@ -4,10 +4,10 @@
 Thanks for checking out this simple app I built inspired by FCC projects. 
 
 ## Install 
-$ git clone https://github.com/ORG/PROJECT.git
-$ cd PROJECT
-$ npm install
-Configure app
+* $ git clone https://github.com/ORG/PROJECT.git
+* $ cd PROJECT
+* $ npm install
+* Configure app
 
 ## API 
 
